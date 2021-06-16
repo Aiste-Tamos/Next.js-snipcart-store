@@ -24,7 +24,7 @@ export default function Home() {
          E-store
         </h1>
 
-        <p className={styles.description}>
+        <p className={styles.total}>
           <a className="snipcart-checkout snipcart-summary" href="#" style={{textDecoration: "none"}}>
             <strong>Cart:</strong> <span className="snipcart-total-price">&euro;0.00</span>
           </a>
@@ -37,16 +37,19 @@ export default function Home() {
                <img src={product.image} alt={`Preview of ${product.title}`}></img>
                <h3>{product.title}</h3>
                <p>{product.description}</p>
+               <div className={styles.priceBtnContainer}>
                <p>&euro;{product.price}</p>
                <p>
-                 <button className="snipcart-add-item"
+                 <button className={`snipcart-add-item ${styles.button}`}
                   data-item-id={product.id}
                   data-item-image={product.image}
                   data-item-name={product.title}
                   data-item-url="/"
                   data-item-price={product.price}
-                 >Add to Cart</button>
+                 >
+                   <span className={styles.span}>Add to Cart</span></button>
                </p>
+               </div>
              </div>
            )
          })}
@@ -54,6 +57,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
+        <span>Have a great day!</span>
       </footer>
       <script async src="https://cdn.snipcart.com/themes/v3.0.21/default/snipcart.js" />
       <div hidden id="snipcart" data-api-key="MTllZjRkZmYtZmZhYi00MTJlLThjZDgtOThkY2FmZTE3MjY2NjM3NTkzMzY3Mjc4MTc2MjMz" data-currency="eur" />
