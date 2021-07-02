@@ -1,15 +1,13 @@
 .container {
   background-color: #f0f5f6;
-  padding: 0 3rem;
 }
 
 .main {
   align-items: center;
   display: flex;
-  flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding: 5rem 0;
+  padding-top: 3rem;
 }
 
 .footer {
@@ -18,7 +16,6 @@
   display: flex;
   height: 100px;
   justify-content: center;
-  width: 100%;
 }
 
 .title {
@@ -34,9 +31,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5rem;
-  margin-top: 5rem;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
 }
 
 .card {
@@ -44,17 +40,16 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: space-between;
-  padding: 2rem;
+  margin: 1.5rem;
+  padding: 1.5rem;
   text-align: justify;
-  width: 100%;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  box-shadow: 0 10px 15px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1rem 1.5rem -1rem rgba(0, 0, 0, 0.3);
   color: #576f8d;
 }
 
@@ -69,14 +64,8 @@
   margin: 0;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
 .card img {
   background-size: cover;
-  height: 10rem;
   width: 10rem;
 }
 
@@ -92,28 +81,23 @@
     90deg
     ,#5082e4,#52bcf8);
    border: 0;
-   box-shadow: 0 10px 15px -10px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 1rem 1.5rem -1rem rgba(0, 0, 0, 0.3);
    color: rgb(58, 58, 58);
    cursor: pointer;
-   display: -webkit-flex;
    display: flex;
    font-family: inherit;
    font-size: 1.1rem;
-   height: 50px;
+   height: 3.5rem;
    justify-content: center;
-   min-width: 160px;
    margin-top: 1rem;
-   padding: 0 30px;
+   padding: 0 3rem;
    position: relative;
    text-align: center;
    transition: all 0.4s ease;
-   width: fit-content;
-   width: -moz-fit-content;
 }
 
 .span {
   text-align: center;
-  z-index: 1;
 }
 
 .button:before,
@@ -123,7 +107,6 @@
     position: absolute;
     top: 0;
     transition: all 0.4s ease;
-    width: 4px;
 }
 
 .button:before {
@@ -135,20 +118,45 @@
 }
 
 .button:hover {
-  box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.8rem 2rem -1.2rem rgba(0, 0, 0, 0.2);
   color: rgb(0, 0, 0);
-  letter-spacing: 2px;
+  letter-spacing: 0.1rem;
   transition: all 0.4s ease;
 }
 
-.button:before,
-.button:after {
-   width: 51%;
-  };
-
-@media (max-width: 600px) {
+@media (min-width: 600px) {
   .grid {
-    flex-direction: column;
-    width: 100%;
+    grid-template-columns: repeat(2, minmax(10rem, 1fr));
+    margin: 1rem;
+  }
+
+  .card {
+    justify-content: start;
+    margin: 0;
+  }
+
+  .card img {
+    height: 8rem;
+    width: auto;
+  }
+
+  .priceBtnContainer {
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(10rem, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    min-width: 15rem;
   }
 }

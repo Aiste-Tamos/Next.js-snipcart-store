@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import * as styles from '../styles/Home.module.css';
 
 export default function Home() {
 
@@ -17,6 +16,9 @@ export default function Home() {
         <link rel="preconnect" href="https://app.snipcart.com" />
         <link rel="preconnect" href="https://cdn.snipcart.com" />
         <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.21/default/snipcart.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="E-store created using Next.js, Snipcart and Fakestore API."/>
+        <title>E-store</title>
       </Head>
 
       <main className={styles.main}>
@@ -34,7 +36,7 @@ export default function Home() {
          {products.map(product => {
            return (
              <div key={product.id} className={styles.card}>
-               <img src={product.image} alt={`Preview of ${product.title}`}></img>
+               <img src={product.image} alt={`Preview of ${product.title}`} width="150px" height="150px"></img>
                <h3>{product.title}</h3>
                <p>{product.description}</p>
                <div className={styles.priceBtnContainer}>
