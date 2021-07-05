@@ -1,16 +1,29 @@
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import Head from 'next/head';
 import * as styles from '../styles/Home.module.css';
 
 export default function Home() {
 
   const[products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const apiUrl = 'https://fakestoreapi.com/products/';
 
-  fetch(apiUrl)
-  .then(response => response.json())
-  .then(products => setProducts(products));
+  // fetch(apiUrl)
+  // .then(response => response.json())
+  // .then(products => setProducts(products));
+
+  useEffect(() => {
+    const fetchData = async() => {
+      setIsLoading(true);
+      const res = await fetch(apiUrl);
+      const products = await res.json();
+      setProducts(products);
+      setIsLoading(false)
+    };
+    fetchData();
+  }, [setProducts]);
+    
   
   return (
     <div className={styles.container}>
@@ -33,12 +46,15 @@ export default function Home() {
             <strong>Cart:</strong> <span className="snipcart-total-price">&euro;0.00</span>
           </a>
         </p>
+        
+        {isLoading && <p>Loading...</p>}
 
         <div className={styles.grid}>
          {products.map(product => {
            return (
              <div key={product.id} className={styles.card}>
-               <img src={product.image} alt={`Preview of ${product.title}`} width="100px" height="100px" loading="lazy"></img>
+               
+               <img src={`${product.image}?tr=w-80`} alt={`Preview of ${product.title}`} width="80" height="80" loading="lazy"></img>
                <h3>{product.title}</h3>
                <p>{product.description}</p>
                <div className={styles.priceBtnContainer}>
@@ -64,7 +80,7 @@ export default function Home() {
         <span>Have a great day!</span>
       </footer>
       <script async src="https://cdn.snipcart.com/themes/v3.0.21/default/snipcart.js" />
-      <div hidden id="snipcart" data-api-key="MTllZjRkZmYtZmZhYi00MTJlLThjZDgtOThkY2FmZTE3MjY2NjM3NTkzMzY3Mjc4MTc2MjMz" data-currency="eur" />
+      <div hidden id="snipcart" data-api-key="MTllZjRkZmYtZmZhYi00MTJlLThjZDgtOThkY2FmZTE3MjY2NjM3NTkzMzY3Mjc4MTc2MjMz" data-currency="eur" data-config-modal-style="side"/>
     </div>
   )
 }
