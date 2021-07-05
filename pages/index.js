@@ -6,7 +6,9 @@ export default function Home() {
 
   const[products, setProducts] = useState([]);
 
-  fetch('https://fakestoreapi.com/products/')
+  const apiUrl = 'https://fakestoreapi.com/products/';
+
+  fetch(apiUrl)
   .then(response => response.json())
   .then(products => setProducts(products));
   
@@ -36,11 +38,11 @@ export default function Home() {
          {products.map(product => {
            return (
              <div key={product.id} className={styles.card}>
-               <img src={product.image} alt={`Preview of ${product.title}`} width="150px" height="150px"></img>
+               <img src={product.image} alt={`Preview of ${product.title}`} width="100px" height="100px" loading="lazy"></img>
                <h3>{product.title}</h3>
                <p>{product.description}</p>
                <div className={styles.priceBtnContainer}>
-               <p>&euro;{product.price}</p>
+               <span>&euro;{product.price}</span>
                <p>
                  <button className={`snipcart-add-item ${styles.button}`}
                   data-item-id={product.id}
